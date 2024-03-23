@@ -1,20 +1,31 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import Navbar from "./components/layout/NavBar/Navbar";
 import ItemListContainer from "./components/pages/ItemListContainer/ItemListContainer";
 import Cart from "./components/common/Cart/Cart";
 import ItemDetailContainer from "./components/pages/ItemDetailContainer/ItemDetailContainer";
+import Layout from "./components/layout/Layout/Layout";
+import { CheckoutContainer } from "./components/pages/Checkout/CheckoutContainer";
+import CartContainer from "./components/pages/CartContainer/CartContainer";
+import CartContextProvider from "./context/CartContext";
 
 function App() {
   return (
     <>
       <BrowserRouter>
-        <Navbar />
-        <Routes>
-          <Route path="/" element={<ItemListContainer />} />
-          <Route path="/category/:category" element={<ItemListContainer />} />
-          <Route path="/cart" element={<Cart />} />
-          <Route path="/item/:id" element={<ItemDetailContainer />} />
-        </Routes>
+        <CartContextProvider>
+          <Routes>
+            <Route element={<Layout />}>
+              <Route path="/" element={<ItemListContainer />} />
+              <Route
+                path="/category/:category"
+                element={<ItemListContainer />}
+              />
+              <Route path="/cart" element={<CartContainer />} />
+              <Route path="/item/:id" element={<ItemDetailContainer />} />
+              <Route path="/checkout" element={<CheckoutContainer />} />
+            </Route>
+            <Route path="*" element={<h1>404 not found</h1>} />
+          </Routes>
+        </CartContextProvider>
       </BrowserRouter>
     </>
   );

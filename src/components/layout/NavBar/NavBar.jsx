@@ -4,7 +4,11 @@ import CartWidget from "../../common/CartWidget/CartWidget";
 const Navbar = () => {
   return (
     <>
-      <h2>Tienda de Comida</h2>
+      <div>
+        <Link to="/">
+          <h2>Tienda de Comida</h2>
+        </Link>
+      </div>
       <div>
         <Link to="/">
           <button>Home</button>
