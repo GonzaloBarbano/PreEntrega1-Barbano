@@ -1,15 +1,5 @@
-const products = [
+export const products = [
   {
-    id: 1,
-    title: "Hamburguesa completa",
-    price: 4000,
-    description: "Medallon de ternera, jamon,queso,tomate,lechuga",
-    img: "https://res.cloudinary.com/dmgnxlety/image/upload/v1709066707/antsvasdm8efjtogoqam.jpg",
-    stock: 20,
-    category: "Hamburguesas",
-  },
-  {
-    id: 2,
     title: "Hamburguesa morada",
     price: 4500,
     description: "Medallon de ternera,cebolla morada,jamon, queso",
@@ -18,7 +8,6 @@ const products = [
     category: "Hamburguesas",
   },
   {
-    id: 3,
     title: "Hamburguesa mutante",
     price: 5000,
     description:
@@ -28,7 +17,6 @@ const products = [
     category: "Hamburguesas",
   },
   {
-    id: 4,
     title: "Chicken burguer",
     price: 4500,
     description: "Medallon de pollo, jamon, queso, tomate y lechuga",
@@ -37,16 +25,6 @@ const products = [
     category: "Hamburguesas",
   },
   {
-    id: 5,
-    title: "Pizza especial",
-    price: 6000,
-    description: "Jamon, mozzarella, morron, huevo",
-    img: "https://res.cloudinary.com/dmgnxlety/image/upload/v1709066931/lq9jtf0q8ojlgwttdbjx.jpg",
-    stock: 20,
-    category: "Pizzas",
-  },
-  {
-    id: 6,
     title: "Mozzarella, oregano, aceitunas",
     price: 5500,
     description: "Pizza mozzarella",
@@ -55,7 +33,6 @@ const products = [
     category: "Pizzas",
   },
   {
-    id: 7,
     title: "Choripan",
     price: 3000,
     description: "Doble chori mariposa,chimi,tomate,lechuga",
@@ -64,7 +41,6 @@ const products = [
     category: "Sanguches",
   },
   {
-    id: 8,
     title: "Lomo completo",
     price: 4000,
     description: "Bife de lomo, jamon,queso,tomate,lechuga",

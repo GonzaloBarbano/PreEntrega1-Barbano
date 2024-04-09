@@ -1,0 +1,9 @@
+.container svg {
+  color: white;
+  width: 24px;
+}
+
+.container svg :hover {
+  color: red;
+  cursor: pointer;
+}

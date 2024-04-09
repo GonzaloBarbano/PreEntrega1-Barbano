@@ -1,33 +1,39 @@
-import { Link } from "react-router-dom";
 import CartWidget from "../../common/CartWidget/CartWidget";
+import "./NavBar.css";
+import { Link } from "react-router-dom";
+import { Container, Navbar, Dropdown } from "react-bootstrap";
 
-const Navbar = () => {
+const NavBar = () => {
   return (
-    <>
-      <div>
-        <Link to="/">
+    <Navbar bg="dark" variant="dark">
+      <Container>
+        <Navbar.Brand as={Link} to="/">
           <h2>Tienda de Comida</h2>
-        </Link>
-      </div>
-      <div>
-        <Link to="/">
-          <button>Home</button>
-        </Link>
-        <Link to="/category/Hamburguesas">
-          <button>Hamburguesas</button>
-        </Link>
-        <Link to="/category/Pizzas">
-          <button>Pizzas</button>
-        </Link>
-        <Link to="/category/Sanguches">
-          <button>Sanguches</button>
-        </Link>
-      </div>
-      <Link to="/cart">
+        </Navbar.Brand>
+        <Dropdown className="bg-dark border-danger">
+          <Dropdown.Toggle
+            className="bg-dark border-danger"
+            variant="success"
+            id="dropdown-basic"
+          >
+            Menu
+          </Dropdown.Toggle>
+          <Dropdown.Menu>
+            <Dropdown.Item as={Link} to="/category/Hamburguesas">
+              Hamburguesas
+            </Dropdown.Item>
+            <Dropdown.Item as={Link} to="/category/Pizzas">
+              Pizzas
+            </Dropdown.Item>
+            <Dropdown.Item as={Link} to="/category/Sanguches">
+              Sanguches
+            </Dropdown.Item>
+          </Dropdown.Menu>
+        </Dropdown>
         <CartWidget />
-      </Link>
-    </>
+      </Container>
+    </Navbar>
   );
 };
 
-export default Navbar;
+export default NavBar;

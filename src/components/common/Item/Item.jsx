@@ -1,15 +1,20 @@
+import Button from "react-bootstrap/Button";
+import Card from "react-bootstrap/Card";
 import { Link } from "react-router-dom";
+import "./Item.css";
 
-const Item = ({ img, title, price, description, id }) => {
+const Item = ({ img, title, price, id }) => {
   return (
-    <div>
-      <img src={img} alt="" />
-      <h2>{title}</h2>
-      <h3>{price}</h3>
-      <Link to={`/item/${id}`}>
-        <button>Detalles</button>
-      </Link>
-    </div>
+    <Card className="d-flex flex-column justify-content-between">
+      <Card.Img variant="top" src={img} />
+      <Card.Body>
+        <Card.Title>{title}</Card.Title>
+        <Card.Text>${price}</Card.Text>
+        <Link to={`/item/${id}`}>
+          <Button>Detalles del Producto</Button>
+        </Link>
+      </Card.Body>
+    </Card>
   );
 };
 

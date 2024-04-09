@@ -1,8 +1,11 @@
 import { useState, useEffect, useContext } from "react";
 import { useParams } from "react-router-dom";
-import { getProduct } from "../../../productsMock";
+import style from "./ItemDetailContainer.css";
 import ItemDetail from "../../common/ItemDetail/ItemDetail";
 import { CartContext } from "../../../context/CartContext";
+import { db } from "../../../firebaseConfig";
+import { collection, doc, getDoc } from "firebase/firestore";
+import { Container } from "react-bootstrap";
 
 const ItemDetailContainer = () => {
   const [item, setItem] = useState(null);
@@ -10,18 +13,18 @@ const ItemDetailContainer = () => {
   const [isLoading, setIsLoading] = useState(true);
 
   const { addCart, getTotalItemQuantityById } = useContext(CartContext);
-  const total = getTotalItemQuantityById(+id);
+  const total = getTotalItemQuantityById(id);
 
   useEffect(() => {
     setIsLoading(true);
 
-    getProduct(id)
-      .then((resp) => {
-        setItem(resp);
-        setIsLoading(false);
+    let productsCollection = collection(db, "products");
+    let refDoc = doc(productsCollection, id);
+    getDoc(refDoc)
+      .then((res) => {
+        setItem({ ...res.data(), id: res.id });
       })
-      .catch((error) => {
-        console.error("Error fetching product:", error);
+      .finally(() => {
         setIsLoading(false);
       });
   }, [id]);
@@ -43,7 +46,10 @@ const ItemDetailContainer = () => {
           </div>
         </div>
       ) : (
-        <ItemDetail {...item} onAdd={onAdd} total={total} />
+        <Container>
+          <h1>Detalles del Producto</h1>
+          <ItemDetail {...item} onAdd={onAdd} total={total} />
+        </Container>
       )}
     </>
   );

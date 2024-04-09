@@ -1,22 +1,27 @@
+import styles from "./ItemCount.css";
+import Swal from "sweetalert2";
+
 export const ItemCount = ({ counter, addOne, subOne, onAdd }) => {
   return (
-    <div className="d-flex flex-column col-2 justify-content-center align-content-center border border-3 border-primary rounded-3 p-4">
-      <div>
+    <div className={styles.contador}>
+      <div className={styles.control}>
         <button
-          className="btn btn-dark mx-3"
+          className={styles.boton}
           onClick={subOne}
           disabled={counter === 1 ? true : false}
         >
           -
         </button>
-        <h2>{counter}</h2>
-        <button className="btn btn-dark mx-3" onClick={addOne}>
+        <h4>{counter}</h4>
+        <button className={styles.boton} onClick={addOne}>
           +
         </button>
       </div>
-      <button className="btn btn-primary mt-2" onClick={() => onAdd(counter)}>
-        Agregar al carrito
-      </button>
+      <div>
+        <button className={styles.boton} onClick={() => onAdd(counter)}>
+          Agregar al carrito
+        </button>
+      </div>
     </div>
   );
 };

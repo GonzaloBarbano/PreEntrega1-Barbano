@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import { Link } from "react-router-dom";
 import { CartContext } from "../../../context/CartContext";
+import styles from "./CartContainer.css";
 import Swal from "sweetalert2";
 
 const CartContainer = () => {
@@ -26,19 +27,26 @@ const CartContainer = () => {
   };
 
   return (
-    <div>
+    <div className={styles.contenedorcart}>
       {cart.map((product) => (
         <div key={product.id}>
           <h2>{product.title}</h2>
           <h2> {product.quantity} </h2>
-          <button onClick={() => removeById(product.id)}>Elimnar</button>
+          <button
+            className="btn btn-primary"
+            onClick={() => removeById(product.id)}
+          >
+            Elimnar
+          </button>
         </div>
       ))}
-      <h2> El total a pagar es: {total} </h2>
+      <h3> El total a pagar es: $ {total} </h3>
 
-      <button onClick={limpiarConAlerta}>Limpiar</button>
+      <button className="btn btn-primary" onClick={limpiarConAlerta}>
+        Vaciar compra
+      </button>
       <Link to="/checkout">
-        <button>Terminar compra</button>
+        <button className="btn btn-primary">Terminar compra</button>
       </Link>
     </div>
   );
